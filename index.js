@@ -18,3 +18,19 @@ function factorialNumber(n) {
 }
 
 console.log(factorialNumber(5))
+
+// create an array with the range of number
+
+function rangeOfNumber(start, end) {
+  if (end<start) {
+      return []
+  } else {
+      let numb = rangeOfNumber(start, end-1);
+      numb.push(end)
+      return numb
+
+  }
+
+}
+
+console.log(rangeOfNumber(1,5))
