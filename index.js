@@ -42,7 +42,7 @@ function palindromeNumber(n) {
 
 console.log(palindromeNumber(1, 2, 1));
 
-// fabonacci number 0,0,1,1,2,3,
+// fabonacci number 0,0,1,1,2,3
 
 function fibRec(n) {
   if (n <= 1) return n;
@@ -50,3 +50,37 @@ function fibRec(n) {
 }
 
 console.log(fibRec(15));
+
+//  reverse string
+function returnStr(str) {
+  if (str === '') {
+    return 'oops';
+  } else return returnStr(str.substr(1)) + returnStr(str.charAt(0));
+}
+console.log(returnStr('shashank'));
+
+// Subsets ( Backtracking Algorithm using Recursion )
+// Given an integer array nums of unique elements, return all possible subsets (the power set).
+// The solution set must not contain duplicate subsets. Return the solution in any order.
+
+// Input: [1,2,3]  ----->>>>>  Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+// Input: [0]      ----->>>>>  Output: [[],[0]]
+
+function subset(nums) {
+  let result = [];
+  let temp = [];
+
+  function recursiveSubset(nums, i) {
+    if (i === nums.length) {
+      return result.push([...temp]);
+    }
+    temp.push(nums[i]);
+    recursiveSubset(nums, i + 1);
+    temp.pop();
+    recursiveSubset(nums, i + 1);
+  }
+  recursiveSubset(nums, 0);
+  return result;
+}
+
+console.log(subset([1, 2, 3]));
